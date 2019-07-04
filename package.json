@@ -67,7 +67,8 @@
     "sort-route-addresses": "^0.0.1",
     "uid-safe": "2.1.5",
     "vary": "1.1.2",
-    "whelk": "^6.0.1"
+    "whelk": "^6.0.1",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "benchmark": "^2.1.2",
@@ -96,11 +97,14 @@
   "scripts": {
     "test": "nodever=`node -e \"console.log('\\`node -v\\`'[1]);\"` && if [ $nodever != \"0\" ]; then npm run lint; fi && npm run custom-tests",
     "custom-tests": "node ./node_modules/mocha/bin/mocha -b",
-    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 --ignore-pattern 'test/' --ignore-pattern 'testApp/'"
+    "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 --ignore-pattern 'test/' --ignore-pattern 'testApp/'",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/balderdashy/sails.git"
-  }
+  },
+  "snyk": true
 }
